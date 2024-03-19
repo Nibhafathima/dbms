@@ -150,3 +150,32 @@ select * from employe;
     |                 4 |
     +-------------------+
 4 rows in set (0.00 sec)
+
+
+
+alter table employe add primary key(ssn);
+desc employe;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| ssn             | varchar(10) | NO   | PRI | NULL    |       |
+| name            | varchar(25) | YES  |     | NULL    |       |
+| department      | varchar(25) | YES  |     | NULL    |       |
+| projectname     | varchar(10) | YES  |     | NULL    |       |
+| projectlocation | varchar(20) | YES  |     | NULL    |       |
+| sallary         | float       | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+
+
+alter table employe drop primary key;
+desc employe;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| ssn             | varchar(10) | NO   |     | NULL    |       |
+| name            | varchar(25) | YES  |     | NULL    |       |
+| department      | varchar(25) | YES  |     | NULL    |       |
+| projectname     | varchar(10) | YES  |     | NULL    |       |
+| projectlocation | varchar(20) | YES  |     | NULL    |       |
+| sallary         | float       | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
