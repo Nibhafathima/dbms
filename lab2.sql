@@ -179,3 +179,139 @@ desc employe;
 | projectlocation | varchar(20) | YES  |     | NULL    |       |
 | sallary         | float       | YES  |     | NULL    |       |
 +-----------------+-------------+------+-----+---------+-------+
+create table department(DID varchar(10) not null ,Dname varchar(25),Dlocation varchar(25),primary key(DID));
+insert into department values('d1','finance','calicut');
+insert into department values('d2','manager','kochi');
+insert into department values('d3','hr','delhi');
+insert into department values('d4','marketing','tvm');
+
+select * from department;
++-----+-----------+-----------+
+| DID | Dname     | Dlocation |
++-----+-----------+-----------+
+| d1  | finance   | calicut   |
+| d2  | manager   | kochi     |
+| d3  | hr        | delhi     |
+| d4  | marketing | tvm       |
++-----+-----------+-----------+
+
+CREATE TABLE orders (orderid INT ,custid INT,custname VARCHAR(25),orderdate DATE);
+insert into orders values(4,1445,'karthik','2024-03-14');
+insert into orders values(5,1745,'sara','2024-03-14');insert into orders values(6,1111,'zara','2024-03-14');insert into orders values(7,2002,'kiran','2024-04-04');
+insert into orders values(8,2225,'thara','2024-05-24');
+insert into orders values(9,3214,'kalam','2024-06-24');insert into orders values(10,1545,'manu','2024-03-14');
+
+select * from orders;
++---------+--------+----------+------------+
+| orderid | custid | custname | orderdate  |
++---------+--------+----------+------------+
+|       1 |   1001 | kavya    | 2024-06-21 |
+|       2 |   1002 | kiran    | 2024-06-12 |
+|       3 |   1345 | varun    | 2024-02-04 |
+|       4 |   1445 | karthik  | 2024-03-14 |
+|       5 |   1745 | sara     | 2024-03-14 |
+|       6 |   1111 | zara     | 2024-03-14 |
+|       7 |   2002 | kiran    | 2024-04-04 |
+|       8 |   2225 | thara    | 2024-05-24 |
+|       9 |   3214 | kalam    | 2024-06-24 |
+|      10 |   1545 | manu     | 2024-03-14 |
++---------+--------+----------+------------+
+update orders set orderdate='2024-07-12' where orderid=7;
+update orders set orderdate='2024-07-9' where orderid=5;
+
+CREATE TABLE product (pid INT ,pname VARCHAR(25),orderid INT);
+
+insert into product values(4001,'laptop',1);
+
+
+ insert into product values(4002,'lipstick',5);
+
+
+ insert into product values(4003,'book',6);
+
+
+ insert into product values(4004,'glass',7);
+
+
+ insert into product values(4005,'pen',9);
+
+
+ select * from product;
++------+----------+---------+
+| pid  | pname    | orderid |
++------+----------+---------+
+| 4001 | laptop   |       1 |
+| 4002 | lipstick |       5 |
+| 4003 | book     |       6 |
+| 4004 | glass    |       7 |
+| 4005 | pen      |       9 |
++------+----------+---------+
+
+select orders.orderid,product.pname from orders join product on orders.orderid = product.orderid;
++---------+----------+
+| orderid | pname    |
++---------+----------+
+|       1 | laptop   |
+|       5 | lipstick |
+|       6 | book     |
+|       7 | glass    |
+|       9 | pen      |
++---------+----------+
+
+select orders.custname,product.pname from orders join product on orders.orderid = product.orderid;
++----------+----------+
+| custname | pname    |
++----------+----------+
+| kavya    | laptop   |
+| sara     | lipstick |
+| zara     | book     |
+| kiran    | glass    |
+| kalam    | pen      |
++----------+----------+
+
+
+ select orders.custname,product.pname from orders left join product on orders.orderid = product.orderid;
++----------+----------+
+| custname | pname    |
++----------+----------+
+| kavya    | laptop   |
+| sara     | lipstick |
+| zara     | book     |
+| kiran    | glass    |
+| kalam    | pen      |
+| kiran    | NULL     |
+| varun    | NULL     |
+| karthik  | NULL     |
+| thara    | NULL     |
+| manu     | NULL     |
++----------+----------+
+
+
+ select orders.custname,product.pname from orders right join product on orders.orderid = product.orderid;
++----------+----------+
+| custname | pname    |
++----------+----------+
+| kavya    | laptop   |
+| sara     | lipstick |
+| zara     | book     |
+| kiran    | glass    |
+| kalam    | pen      |
++----------+----------+
+5 rows in set (0.00 sec)
+
+ select orders.orderid,product.pname from orders left join product on orders.orderid = product.orderid;
++---------+----------+
+| orderid | pname    |
++---------+----------+
+|       1 | laptop   |
+|       5 | lipstick |
+|       6 | book     |
+|       7 | glass    |
+|       9 | pen      |
+|       2 | NULL     |
+|       3 | NULL     |
+|       4 | NULL     |
+|       8 | NULL     |
+|      10 | NULL     |
++---------+----------+
+1
