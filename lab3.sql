@@ -28,3 +28,16 @@ desc product;
 | pname   | varchar(25) | YES  |     | NULL    |       |
 | orderid | int         | YES  | MUL | NULL    |       |
 +---------+-------------+------+-----+---------+-------+
+
+select product .pname,orders.orderid from product join orders on product.orderid=orders.orderid;
++----------+---------+
+| pname    | orderid |
++----------+---------+
+| laptop   |       1 |
+| lipstick |       5 |
+| book     |       6 |
+| glass    |       7 |
+| pen      |       9 |
++----------+---------+
+create table course(staffid int,cusno int,cusname varchar(25),primary key(staffid));
+CREATE TABLE facuality (fno INT PRIMARY KEY,fname VARCHAR(25),staffid INT,FOREIGN KEY (staffid) REFERENCES course(staffid));
