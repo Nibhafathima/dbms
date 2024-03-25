@@ -41,3 +41,10 @@ select product .pname,orders.orderid from product join orders on product.orderid
 +----------+---------+
 create table course(staffid int,cusno int,cusname varchar(25),primary key(staffid));
 CREATE TABLE facuality (fno INT PRIMARY KEY,fname VARCHAR(25),staffid INT,FOREIGN KEY (staffid) REFERENCES course(staffid));
+
+insert into course values(101,991,"manu");
+ insert into course values(102,221,"marya");
+ insert into course values(103,333,"maya");
+ insert into course values(104,343,"riya");
+insert into course values(105,443,"kiran");
+
