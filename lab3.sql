@@ -39,6 +39,37 @@ select product .pname,orders.orderid from product join orders on product.orderid
 | glass    |       7 |
 | pen      |       9 |
 +----------+---------+
+
+ select * from viewone;
++------+----------+
+| pid  | pname    |
++------+----------+
+| 4001 | laptop   |
+| 4002 | lipstick |
+| 4003 | book     |
+| 4004 | glass    |
+| 4005 | pen      |
++------+----------+
+
+ 
+create view viewtwo as select custid,custname from orders;
+ select * from viewtwo;
++--------+----------+
+| custid | custname |
++--------+----------+
+|   1001 | kavya    |
+|   1002 | kiran    |
+|   1345 | varun    |
+|   1445 | karthik  |
+|   1745 | sara     |
+|   1111 | zara     |
+|   2002 | kiran    |
+|   2225 | thara    |
+|   3214 | kalam    |
+|   1545 | manu     |
++--------+----------+
+
+ 
 create table course(staffid int,cusno int,cusname varchar(25),primary key(staffid));
 CREATE TABLE facuality (fno INT PRIMARY KEY,fname VARCHAR(25),staffid INT,FOREIGN KEY (staffid) REFERENCES course(staffid));
 
