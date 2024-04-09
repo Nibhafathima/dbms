@@ -68,6 +68,18 @@ create view viewtwo as select custid,custname from orders;
 |   3214 | kalam    |
 |   1545 | manu     |
 +--------+----------+
+  SELECT orderid, custname FROM orders o WHERE EXISTS (SELECT 1 FROM product p WHERE p.orderid = o.orderid);
++---------+----------+
+| orderid | custname |
++---------+----------+
+|       1 | kavya    |
+|       5 | sara     |
+|       6 | zara     |
+|       7 | kiran    |
+|       9 | kalam    |
++---------+----------+
+5 rows in set (0.00 sec)
+ 
 
  
 create table course(staffid int,cusno int,cusname varchar(25),primary key(staffid));
