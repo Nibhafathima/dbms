@@ -1,3 +1,5 @@
+
+
 alter table orders add primary key (orderid);
 desc orders;
 +-----------+-------------+------+-----+---------+-------+
@@ -86,8 +88,29 @@ create table course(staffid int,cusno int,cusname varchar(25),primary key(staffi
 CREATE TABLE facuality (fno INT PRIMARY KEY,fname VARCHAR(25),staffid INT,FOREIGN KEY (staffid) REFERENCES course(staffid));
 
 insert into course values(101,991,"manu");
- insert into course values(102,221,"marya");
- insert into course values(103,333,"maya");
- insert into course values(104,343,"riya");
+insert into course values(102,221,"marya");
+insert into course values(103,333,"maya");
+insert into course values(104,343,"riya");
 insert into course values(105,443,"kiran");
+
+
+insert into facuality values(201,"rony",101);
+insert into facuality values(202,"sunny",102);
+insert into facuality values(203,"saya",103);
+insert into facuality values(204,"saya",104); 
+insert into facuality values(205,"saya",105);
+
+
+
+SELECT staffid, cusname FROM course o WHERE EXISTS (SELECT 1 FROM facuality p WHERE p.staffid = o.staffid);
++---------+---------+
+| staffid | cusname |
++---------+---------+
+|     101 | manu    |
+|     102 | marya   |
+|     103 | maya    |
+|     104 | riya    |
+|     105 | kiran   |
++---------+---------+
+5 rows in set (0.00 sec)
 
