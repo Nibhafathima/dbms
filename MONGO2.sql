@@ -79,4 +79,7 @@ var bulk = db.niba.initializeUnorderedBulkOp();
                 "name" : "name_-1"
         }
 ]
->
+ db.niba.dropIndex({name:-1})
+{ "nIndexesWas" : 2, "ok" : 1 }
+> db.niba.getIndexes()
+[ { "v" : 2, "key" : { "_id" : 1 }, "name" : "_id_" } ]
