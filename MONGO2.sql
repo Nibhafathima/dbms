@@ -44,3 +44,39 @@
 { "_id" : ObjectId("66222aa8d5c009723210e520"), "name" : "manu", "age" : 23 }
 { "_id" : ObjectId("66222ab7d5c009723210e521"), "name" : "sonu", "age" : 27 }
 { "_id" : ObjectId("66222ac5d5c009723210e522"), "name" : "finu", "age" : 25 }
+
+var bulk = db.niba.initializeUnorderedBulkOp();
+> bulk.insert({name:"ami",age:20});
+> bulk.insert({name:"anu",age:21});
+> bulk.insert({name:"manu",age:22});
+> bulk.insert({name:"minu",age:23});
+> bulk.insert({name:"teena",age:23});
+> bulk.insert({name:"reena",age:23});
+> bulk.execute();
+
+
+ db.niba.createIndex({name:-1})
+{
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "createdCollectionAutomatically" : false,
+        "ok" : 1
+}
+> db.niba.getIndexes()
+[
+        {
+                "v" : 2,
+                "key" : {
+                        "_id" : 1
+                },
+                "name" : "_id_"
+        },
+        {
+                "v" : 2,
+                "key" : {
+                        "name" : -1
+                },
+                "name" : "name_-1"
+        }
+]
+>
